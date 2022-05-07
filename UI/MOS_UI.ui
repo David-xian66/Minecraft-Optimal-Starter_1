@@ -792,7 +792,9 @@
     <item row="0" column="8">
      <widget class="QPushButton" name="pushButton_0_chose">
       <property name="styleSheet">
-       <string notr="true">background-color:rgb(252, 1, 7);color:rgb(252, 1, 7);border:1px groove gray;border-radius:10px;padding:2px 9px;border-style: outset;</string>
+       <string notr="true">button-&gt;setText(&quot;&quot;);QPixmap pixmap(url(:/png/picture/close.png));QPixmap fitpixmap = pixmap.scaled(30, 30, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);button-&gt;setIcon(QIcon(fitpixmap));button-&gt;setIconSize(QSize(30, 30));button-&gt;setFlat(true);  button-&gt;setStyleSheet(&quot;border: 0px&quot;); 
+
+</string>
       </property>
       <property name="text">
        <string/>
@@ -802,7 +804,9 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../img.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>pushButton_0_chose</sender>
