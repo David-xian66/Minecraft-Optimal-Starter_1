@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="653fc617-9e15-451f-a568-a2b24eb58436" name="变更" comment="5.4 打包方式确定">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MOS.py" beforeDir="false" afterPath="$PROJECT_DIR$/MOS.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/MOS_UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/MOS_UI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/MOS_UI.ui" beforeDir="false" afterPath="$PROJECT_DIR$/UI/MOS_UI.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/picture/close.png" beforeDir="false" afterPath="$PROJECT_DIR$/picture/close.png" afterDir="false" />
-    </list>
+    <list default="true" id="653fc617-9e15-451f-a568-a2b24eb58436" name="变更" comment="5.8" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -427,7 +421,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651672388245</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="5.8">
+      <created>1652020296927</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1652020296927</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -466,7 +467,8 @@
     <MESSAGE value="重写代码" />
     <MESSAGE value="5。3 UI更新" />
     <MESSAGE value="5.4 打包方式确定" />
-    <option name="LAST_COMMIT_MESSAGE" value="5.4 打包方式确定" />
+    <MESSAGE value="5.8" />
+    <option name="LAST_COMMIT_MESSAGE" value="5.8" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
