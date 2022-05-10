@@ -32,7 +32,7 @@
      </spacer>
     </item>
     <item row="0" column="0">
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="label_MOS_1">
       <property name="styleSheet">
        <string notr="true">color:rgb(255, 255, 255)</string>
       </property>
@@ -498,13 +498,26 @@
       </widget>
       <widget class="QWidget" name="page_xiazai">
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="2" column="0">
-         <widget class="QPushButton" name="pushButton_xiazai_mode">
+        <item row="1" column="0">
+         <spacer name="verticalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="4" column="0">
+         <widget class="QPushButton" name="pushButton_xiazai_zhenghebao">
           <property name="styleSheet">
            <string notr="true">background-color:rgb(255, 255, 255)</string>
           </property>
           <property name="text">
-           <string>Mod</string>
+           <string>整合包</string>
           </property>
          </widget>
         </item>
@@ -520,6 +533,16 @@
            </size>
           </property>
          </spacer>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="pushButton_xiazai_mode">
+          <property name="styleSheet">
+           <string notr="true">background-color:rgb(255, 255, 255)</string>
+          </property>
+          <property name="text">
+           <string>Mod</string>
+          </property>
+         </widget>
         </item>
         <item row="9" column="0">
          <spacer name="verticalSpacer_7">
@@ -546,29 +569,6 @@
            </size>
           </property>
          </spacer>
-        </item>
-        <item row="1" column="0">
-         <spacer name="verticalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="4" column="0">
-         <widget class="QPushButton" name="pushButton_xiazai_zhenghebao">
-          <property name="styleSheet">
-           <string notr="true">background-color:rgb(255, 255, 255)</string>
-          </property>
-          <property name="text">
-           <string>整合包</string>
-          </property>
-         </widget>
         </item>
         <item row="7" column="0">
          <spacer name="verticalSpacer_9">
@@ -635,7 +635,7 @@
         <item row="0" column="1" rowspan="11">
          <widget class="QStackedWidget" name="stackedWidget_xiazai_game">
           <property name="currentIndex">
-           <number>1</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="page_xiazai_game">
            <layout class="QGridLayout" name="gridLayout_4">
@@ -743,9 +743,78 @@
              <widget class="QTreeWidget" name="treeWidget_2">
               <column>
                <property name="text">
-                <string notr="true">1</string>
+                <string notr="true">Mod</string>
                </property>
               </column>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="page_xiazai_zhenghebao">
+           <layout class="QGridLayout" name="gridLayout_13">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>搜索</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="4">
+             <widget class="QComboBox" name="comboBox_6"/>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_11">
+              <property name="text">
+               <string>类别</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="4">
+             <widget class="QComboBox" name="comboBox_8"/>
+            </item>
+            <item row="0" column="1" colspan="2">
+             <widget class="QLineEdit" name="lineEdit_7">
+              <property name="placeholderText">
+               <string>仅支持英文搜索</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="QLabel" name="label_12">
+              <property name="text">
+               <string>排序方式</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1" colspan="2">
+             <widget class="QComboBox" name="comboBox_7"/>
+            </item>
+            <item row="3" column="0" colspan="5">
+             <widget class="QTreeWidget" name="treeWidget_3">
+              <column>
+               <property name="text">
+                <string>整合包</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="QLabel" name="label_10">
+              <property name="text">
+               <string>版本</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
              </widget>
             </item>
            </layout>
@@ -754,7 +823,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page">
+      <widget class="QWidget" name="page_lianji">
        <layout class="QGridLayout" name="gridLayout_10">
         <item row="0" column="0">
          <widget class="QLabel" name="label">
@@ -768,7 +837,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page_2">
+      <widget class="QWidget" name="page_shezhi">
        <layout class="QGridLayout" name="gridLayout_11">
         <item row="0" column="1" rowspan="10">
          <widget class="QStackedWidget" name="stackedWidget">
@@ -816,14 +885,14 @@
          </spacer>
         </item>
         <item row="0" column="0">
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="pushButton_shezhi_qidongqi">
           <property name="text">
            <string>启动器设置</string>
           </property>
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="pushButton_shezhi_game">
           <property name="text">
            <string>游戏全局设置</string>
           </property>
@@ -889,9 +958,7 @@
     <item row="0" column="8">
      <widget class="QPushButton" name="pushButton_0_chose">
       <property name="styleSheet">
-       <string notr="true">background-image: url(:/png/picture/close.png);
-border-image: url(:/png/picture/close.png);
-image: url(:/png/picture/close.png);
+       <string notr="true">
 
 </string>
       </property>
