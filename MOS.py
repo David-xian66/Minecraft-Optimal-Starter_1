@@ -374,7 +374,9 @@ class Ui_MOS(object):
         self.stackedWidget_xiazai_game.setCurrentIndex(2)
         self.pushButton_0_chose.clicked.connect(MOS.close)
         QtCore.QMetaObject.connectSlotsByName(MOS)
-
+        self.g=gonggao()
+        self.g.sinOut.connect(self.gonggao)
+        self.g.start()
     def click_pushButton_1(self):  # 点击触发
         self.stackedWidget_zhu.setCurrentIndex(0)  # 打开 stackedWidget > page_0
 
@@ -407,7 +409,8 @@ class Ui_MOS(object):
 
     def click_pushButton_xiazai_zhenghebao(self):
         self.stackedWidget_xiazai_game.setCurrentIndex(2)
-
+    def gonggao(self,str):
+        self.stackedWidget_tongzhi.setCurrentIndex(1)
 
     def retranslateUi(self, MOS):
         _translate = QtCore.QCoreApplication.translate
@@ -464,11 +467,16 @@ class Ui_MOS(object):
         self.pushButton_xiazai_mode.clicked.connect(self.click_pushButton_xiazai_mode)
         self.pushButton_xiazai_zhenghebao.clicked.connect(self.click_pushButton_xiazai_zhenghebao)
 
-class gonggao(Qthread):
+class gonggao(QThread):
     sinOut=pyqtSignal(str)
     def __init__(self):
         super(gonggao,self).__init__()
-    def __trunc__(self):
+    def run(self):
+        import requests
+        url = 'https://api.xiaoyistudio.top/MOS/MOS.html'
+        r=strhtml = requests.get(url)        #Get方式获取网页数据
+        r.encoding = "utf-8"
+        print(strhtml.text)
 if __name__ == '__main__':
     print ("程序已开始运行！")
     app = QtWidgets.QApplication(sys.argv)
