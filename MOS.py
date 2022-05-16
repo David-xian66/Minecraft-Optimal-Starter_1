@@ -1,7 +1,8 @@
-import sys
-from PyQt6 import QtCore, QtGui, QtWidgets
-from PyQt6.QtCore import *
+import sys,os
 import requests
+
+from PyQt6.QtCore import *
+from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class Ui_MOS(object):
@@ -127,9 +128,9 @@ class Ui_MOS(object):
         self.page_tongzhi.setObjectName("page_tongzhi")
         self.gridLayout_8 = QtWidgets.QGridLayout(self.page_tongzhi)
         self.gridLayout_8.setObjectName("gridLayout_8")
-        self.textBrowser = QtWidgets.QTextBrowser(self.page_tongzhi)
-        self.textBrowser.setObjectName("textBrowser")
-        self.gridLayout_8.addWidget(self.textBrowser, 0, 0, 1, 1)
+        self.textBrowser_gonggao = QtWidgets.QTextBrowser(self.page_tongzhi)
+        self.textBrowser_gonggao.setObjectName("textBrowser_gonggao")
+        self.gridLayout_8.addWidget(self.textBrowser_gonggao, 0, 0, 1, 1)
         self.stackedWidget_tongzhi.addWidget(self.page_tongzhi)
         self.page_tongzhi_ing = QtWidgets.QWidget()
         self.page_tongzhi_ing.setObjectName("page_tongzhi_ing")
@@ -359,21 +360,24 @@ class Ui_MOS(object):
         self.stackedWidget_zhu.addWidget(self.page_3)
         self.gridLayout.addWidget(self.stackedWidget_zhu, 1, 0, 1, 9)
         self.pushButton_0_chose = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_0_chose.setStyleSheet("\n"
-"\n"
-"")
+        self.pushButton_0_chose.setStyleSheet("")
         self.pushButton_0_chose.setText("")
         self.pushButton_0_chose.setObjectName("pushButton_0_chose")
         self.gridLayout.addWidget(self.pushButton_0_chose, 0, 8, 1, 1)
         MOS.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MOS)
-        self.stackedWidget_zhu.setCurrentIndex(1)
+        self.stackedWidget_zhu.setCurrentIndex(0)
         self.stackedWidget_Login.setCurrentIndex(1)
-        self.stackedWidget_tongzhi.setCurrentIndex(1)
+        self.stackedWidget_tongzhi.setCurrentIndex(0)
         self.stackedWidget_xiazai_game.setCurrentIndex(2)
         self.pushButton_0_chose.clicked.connect(MOS.close)
         QtCore.QMetaObject.connectSlotsByName(MOS)
+        #
+        self.stackedWidget_tongzhi.setCurrentIndex(1)
+        self.progressBar.setMinimum(0)
+        self.progressBar.setMaximum(0)
+        #启动线程
         self.g=gonggao()
         self.g.sinOut.connect(self.gonggao)
         self.g.start()
@@ -409,8 +413,11 @@ class Ui_MOS(object):
 
     def click_pushButton_xiazai_zhenghebao(self):
         self.stackedWidget_xiazai_game.setCurrentIndex(2)
+
     def gonggao(self,str):
+        self.textBrowser_gonggao.setHtml(str)
         self.stackedWidget_tongzhi.setCurrentIndex(1)
+
 
     def retranslateUi(self, MOS):
         _translate = QtCore.QCoreApplication.translate
@@ -467,16 +474,26 @@ class Ui_MOS(object):
         self.pushButton_xiazai_mode.clicked.connect(self.click_pushButton_xiazai_mode)
         self.pushButton_xiazai_zhenghebao.clicked.connect(self.click_pushButton_xiazai_zhenghebao)
 
+
+
+
 class gonggao(QThread):
     sinOut=pyqtSignal(str)
     def __init__(self):
         super(gonggao,self).__init__()
     def run(self):
         import requests
+        print("线程开始")
         url = 'https://api.xiaoyistudio.top/MOS/MOS.html'
         r=strhtml = requests.get(url)        #Get方式获取网页数据
         r.encoding = "utf-8"
         print(strhtml.text)
+        str=strhtml
+        self.sinOut.emit(str)
+
+
+
+
 if __name__ == '__main__':
     print ("程序已开始运行！")
     app = QtWidgets.QApplication(sys.argv)

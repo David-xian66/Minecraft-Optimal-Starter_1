@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="653fc617-9e15-451f-a568-a2b24eb58436" name="变更" comment="5.10">
-      <change afterPath="$PROJECT_DIR$/pa.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pa的副本.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MOS.py" beforeDir="false" afterPath="$PROJECT_DIR$/MOS.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/MOS_UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/MOS_UI.py" afterDir="false" />
@@ -53,13 +53,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings is-module-sdk="true">
@@ -76,7 +76,7 @@
       <recent name="$PROJECT_DIR$/UI" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.pa">
+  <component name="RunManager" selected="Python.MOS">
     <configuration name="0.0.0.0.1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MOS" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -186,6 +186,9 @@
       <module name="MOS" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -232,8 +235,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.pa" />
         <item itemvalue="Python.MOS" />
+        <item itemvalue="Python.pa" />
         <item itemvalue="Python.MOS_UI" />
         <item itemvalue="Python.0.0.0.0.1" />
         <item itemvalue="Python.untitled" />

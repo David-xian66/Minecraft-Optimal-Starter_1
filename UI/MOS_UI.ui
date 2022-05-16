@@ -111,7 +111,7 @@
        <string notr="true">background-color:rgb(102, 204, 255)</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page_home">
        <layout class="QGridLayout" name="gridLayout_2">
@@ -280,12 +280,12 @@
            <string notr="true"/>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="page_tongzhi">
            <layout class="QGridLayout" name="gridLayout_8">
             <item row="0" column="0">
-             <widget class="QTextBrowser" name="textBrowser"/>
+             <widget class="QTextBrowser" name="textBrowser_gonggao"/>
             </item>
            </layout>
           </widget>
@@ -958,9 +958,7 @@
     <item row="0" column="8">
      <widget class="QPushButton" name="pushButton_0_chose">
       <property name="styleSheet">
-       <string notr="true">
-
-</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string/>

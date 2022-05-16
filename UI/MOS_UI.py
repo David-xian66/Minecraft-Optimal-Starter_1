@@ -132,9 +132,9 @@ class Ui_MOS(object):
         self.page_tongzhi.setObjectName("page_tongzhi")
         self.gridLayout_8 = QtWidgets.QGridLayout(self.page_tongzhi)
         self.gridLayout_8.setObjectName("gridLayout_8")
-        self.textBrowser = QtWidgets.QTextBrowser(self.page_tongzhi)
-        self.textBrowser.setObjectName("textBrowser")
-        self.gridLayout_8.addWidget(self.textBrowser, 0, 0, 1, 1)
+        self.textBrowser_gonggao = QtWidgets.QTextBrowser(self.page_tongzhi)
+        self.textBrowser_gonggao.setObjectName("textBrowser_gonggao")
+        self.gridLayout_8.addWidget(self.textBrowser_gonggao, 0, 0, 1, 1)
         self.stackedWidget_tongzhi.addWidget(self.page_tongzhi)
         self.page_tongzhi_ing = QtWidgets.QWidget()
         self.page_tongzhi_ing.setObjectName("page_tongzhi_ing")
@@ -364,22 +364,23 @@ class Ui_MOS(object):
         self.stackedWidget_zhu.addWidget(self.page_3)
         self.gridLayout.addWidget(self.stackedWidget_zhu, 1, 0, 1, 9)
         self.pushButton_0_chose = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_0_chose.setStyleSheet("\n"
-"\n"
-"")
+        self.pushButton_0_chose.setStyleSheet("")
         self.pushButton_0_chose.setText("")
         self.pushButton_0_chose.setObjectName("pushButton_0_chose")
         self.gridLayout.addWidget(self.pushButton_0_chose, 0, 8, 1, 1)
         MOS.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MOS)
-        self.stackedWidget_zhu.setCurrentIndex(1)
+        self.stackedWidget_zhu.setCurrentIndex(0)
         self.stackedWidget_Login.setCurrentIndex(1)
-        self.stackedWidget_tongzhi.setCurrentIndex(1)
+        self.stackedWidget_tongzhi.setCurrentIndex(0)
         self.stackedWidget_xiazai_game.setCurrentIndex(2)
         self.pushButton_0_chose.clicked.connect(MOS.close)
         QtCore.QMetaObject.connectSlotsByName(MOS)
-
+        #启动线程
+        self.g=gonggao()
+        self.g.sinOut.connect(self.gonggao)
+        self.g.start()
     def click_pushButton_1(self):  # 点击触发
         self.stackedWidget_zhu.setCurrentIndex(0)  # 打开 stackedWidget > page_0
 
@@ -404,6 +405,16 @@ class Ui_MOS(object):
     def click_pushButton_login_lixian(self):
         self.stackedWidget_Login.setCurrentIndex(2)
 
+    def click_pushButton_xiazai_game(self):
+        self.stackedWidget_xiazai_game.setCurrentIndex(0)
+
+    def click_pushButton_xiazai_mode(self):
+        self.stackedWidget_xiazai_game.setCurrentIndex(1)
+
+    def click_pushButton_xiazai_zhenghebao(self):
+        self.stackedWidget_xiazai_game.setCurrentIndex(2)
+    def gonggao(self,str):
+        self.stackedWidget_tongzhi.setCurrentIndex(1)
 
     def retranslateUi(self, MOS):
         _translate = QtCore.QCoreApplication.translate
@@ -456,4 +467,8 @@ class Ui_MOS(object):
         self.pushButton_login_weiruan.clicked.connect(self.click_pushButton_login_weiruan)
         self.pushButton_login_Mcjang.clicked.connect(self.click_pushButton_login_Mcjang)
         self.pushButton_login_lixian.clicked.connect(self.click_pushButton_login_lixian)
+        self.pushButton_xiazai_game.clicked.connect(self.click_pushButton_xiazai_game)
+        self.pushButton_xiazai_mode.clicked.connect(self.click_pushButton_xiazai_mode)
+        self.pushButton_xiazai_zhenghebao.clicked.connect(self.click_pushButton_xiazai_zhenghebao)
+
 
