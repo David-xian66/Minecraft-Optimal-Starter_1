@@ -379,7 +379,7 @@ class Ui_MOS(object):
         self.progressBar.setMaximum(0)
         #启动线程
         self.g=gonggao()
-        self.g.sinOut.connect(self.gonggao)
+        self.g.sinOut_gonggao.connect(self.gonggao)
         self.g.start()
     def click_pushButton_1(self):  # 点击触发
         self.stackedWidget_zhu.setCurrentIndex(0)  # 打开 stackedWidget > page_0
@@ -416,7 +416,7 @@ class Ui_MOS(object):
 
     def gonggao(self,str):
         self.textBrowser_gonggao.setHtml(str)
-        self.stackedWidget_tongzhi.setCurrentIndex(1)
+        self.stackedWidget_tongzhi.setCurrentIndex(0)
 
 
     def retranslateUi(self, MOS):
@@ -478,7 +478,7 @@ class Ui_MOS(object):
 
 
 class gonggao(QThread):
-    sinOut=pyqtSignal(str)
+    sinOut_gonggao=pyqtSignal(str)
     def __init__(self):
         super(gonggao,self).__init__()
     def run(self):
@@ -487,9 +487,9 @@ class gonggao(QThread):
         url = 'https://api.xiaoyistudio.top/MOS/MOS.html'
         r=strhtml = requests.get(url)        #Get方式获取网页数据
         r.encoding = "utf-8"
+        # requests.exceptions.SSLError
         print(strhtml.text)
-        str=strhtml
-        self.sinOut.emit(str)
+        self.sinOut_gonggao.emit("OK!")
 
 
 
