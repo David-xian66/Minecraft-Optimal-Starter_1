@@ -1,7 +1,12 @@
 import sys,os
 import requests
+import json
+import datetime
+
 
 from PyQt6.QtCore import *
+
+
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
@@ -437,6 +442,7 @@ class Ui_MOS(object):
 
     def gonggao_error(self, str):
         self.stackedWidget_tongzhi.setCurrentIndex(1)
+        self.label_2.setText("请求出错，错误代码："+str)
         self.progressBar.setMinimum(0)
         self.progressBar.setMaximum(99)
         self.progressBar.setValue(99)
@@ -508,26 +514,45 @@ class gonggao(QThread):
     def run(self):
         import requests
         print("线程开始")
-        url = 'https://api.xiaoyistudio.top/MOS/'
-        r=strhtml = requests.get(url,timeout=15)        #Get方式获取网页数据
-        r.encoding = "utf-8"
-        if r.status_code == 200:
-           goonggao_Html=strhtml.text
-           print(goonggao_Html)
-           MOS_L_1=os.path.join(".MOS","Html")
-           MOS_L_2=os.path.join(MOS_L_1,"gonggao.html")
-           MOS_Html_gonggao_ok=open(MOS_L_2,'w+',encoding='utf-8')
-           MOS_Html_gonggao_ok.write(goonggao_Html)
-           self.sinOut_gonggao_ok.emit(goonggao_Html)
-        elif r.status_code == 403:
-           print("公告请求失败，状态码为403")
-           self.sinOut_gonggao_error.emit("403")
+        url = 'https://api.xiaoyistudio.top/MOS/MOS.html'
+        try:
+            r = strhtml = requests.get(url, timeout=15)  # Get方式获取网页数据
+            r.encoding = "utf-8"
+            if r.status_code == 200:
+                goonggao_Html = strhtml.text
+                print(goonggao_Html)
+                MOS_L_1 = os.path.join(".MOS", "Html")
+                MOS_L_2 = os.path.join(MOS_L_1, "gonggao.html")
+                MOS_Html_gonggao_ok = open(MOS_L_2, 'w+', encoding='utf-8')
+                MOS_Html_gonggao_ok.write(goonggao_Html)
+                self.sinOut_gonggao_ok.emit(goonggao_Html)
+
+            elif r.status_code == 403:
+                print("公告请求失败，状态码为403")
+                self.sinOut_gonggao_error.emit("403，无权限访问")
+
+            elif r.status_code == 404:
+                print("公告请求失败，状态码为404")
+                self.sinOut_gonggao_error.emit("404，找不到文件")
+
+            elif r.status_code != 200:
+                gonggao_r_status_code = r.status_code
+                googgao_111 = ("公告请求失败，状态码为" + gonggaor_status)
+                print(goonggao_111)
+                self.sinOut_gonggao_error.emit(goonggao_111)
+
+        except requests.exceptions.ConnectTimeout:
+            self.sinOut_gonggao_error.emit("请求超时")
+
         # requests.exceptions.SSLError
         # requests.exceptions.ConnectTimeout
 
 
 
-def folder_first():
+
+
+def MOS_Json():
+    #创建文件
     os.makedirs(".MOS", exist_ok=True)
     MOS_L=os.path.join(".MOS","Html")
     os.makedirs(MOS_L, exist_ok=True)
@@ -538,12 +563,27 @@ def folder_first():
     MOS_L=os.path.join(".MOS","Music")
     os.makedirs(MOS_L, exist_ok=True)
     MOS_L=os.path.join(".MOS","MOS.json")
-    # MOS_json=open(MOS_l,'w+',encoding='utf-8')
+    if os.path.isfile(MOS_L)==True:
+        MOS_first_run = "NoFirst"
+        MOS_json=open(MOS_L,"w")
+        MOS_json.close()
+    elif os.path.isfile(MOS_L)==False:
+        MOS_first_run = "First"
+    MOS_L = os.path.join(".MOS", "MOS.json")
+    MOS_json_write = MOS_L
+    if MOS_first_run=="First":
+        #如果是第一次运行就（下
+        with open(MOS_json_write, "w"):
+            #获取当前时间
+            # 这个变量里存储的是当前时间
+            start_time= datetime.datetime.now()
+            aaa="11212"
+            MOS_json_1=json.dumps(start_time,aaa)
 
 
 
 if __name__ == '__main__':
-    folder_first()
+    MOS_Json()
     print ("程序已开始运行！")
     app = QtWidgets.QApplication(sys.argv)
     print ("请稍等...")
