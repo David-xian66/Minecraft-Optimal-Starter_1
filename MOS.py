@@ -379,44 +379,67 @@ class Ui_MOS(object):
         self.progressBar.setMaximum(0)
         #启动线程
         self.g=gonggao()
-        self.g.sinOut_gonggao.connect(self.gonggao)
+        self.g.sinOut_gonggao_ok.connect(self.gonggao)
+        self.g.sinOut_gonggao_error.connect(self.gonggao_error)
         self.g.start()
     def click_pushButton_1(self):  # 点击触发
         self.stackedWidget_zhu.setCurrentIndex(0)  # 打开 stackedWidget > page_0
 
+
     def click_pushButton_2(self):  # 点击触发
         self.stackedWidget_zhu.setCurrentIndex(1)  # 打开 stackedWidget > page_0
+
 
     def click_pushButton_3(self):  # 点击触发
         self.stackedWidget_zhu.setCurrentIndex(2)  # 打开 stackedWidget > page_0
 
+
     def click_pushButton_4(self):  # 点击触发
         self.stackedWidget_zhu.setCurrentIndex(3)  # 打开 stackedWidget > page_0
+
 
     def click_pushButton_5(self):  # 点击触发
         self.stackedWidget_zhu.setCurrentIndex(4)  # 打开 stackedWidget > page_0
 
+
     def click_pushButton_login_weiruan(self):
         self.stackedWidget_Login.setCurrentIndex(0)
+
 
     def click_pushButton_login_Mcjang(self):
         self.stackedWidget_Login.setCurrentIndex(1)
 
+
     def click_pushButton_login_lixian(self):
         self.stackedWidget_Login.setCurrentIndex(2)
+
 
     def click_pushButton_xiazai_game(self):
         self.stackedWidget_xiazai_game.setCurrentIndex(0)
 
+
     def click_pushButton_xiazai_mode(self):
         self.stackedWidget_xiazai_game.setCurrentIndex(1)
+
 
     def click_pushButton_xiazai_zhenghebao(self):
         self.stackedWidget_xiazai_game.setCurrentIndex(2)
 
+
     def gonggao(self,str):
+        MOS_L_1=os.path.join(".MOS","Html")
+        MOS_L_2=os.path.join(MOS_L_1,"gonggao.html")
+        MOS_Html_gonggao=open(MOS_L_2,'w+',encoding='utf-8')
+        MOS_Hrtml_goonggao_1=f"{MOS_Html_gonggao.readlines}"
         self.textBrowser_gonggao.setHtml(str)
         self.stackedWidget_tongzhi.setCurrentIndex(0)
+
+
+    def gonggao_error(self, str):
+        self.stackedWidget_tongzhi.setCurrentIndex(1)
+        self.progressBar.setMinimum(0)
+        self.progressBar.setMaximum(99)
+        self.progressBar.setValue(99)
 
 
     def retranslateUi(self, MOS):
@@ -478,23 +501,49 @@ class Ui_MOS(object):
 
 
 class gonggao(QThread):
-    sinOut_gonggao=pyqtSignal(str)
+    sinOut_gonggao_ok=pyqtSignal(str)
+    sinOut_gonggao_error=pyqtSignal(str)
     def __init__(self):
         super(gonggao,self).__init__()
     def run(self):
         import requests
         print("线程开始")
-        url = 'https://api.xiaoyistudio.top/MOS/MOS.html'
-        r=strhtml = requests.get(url)        #Get方式获取网页数据
+        url = 'https://api.xiaoyistudio.top/MOS/'
+        r=strhtml = requests.get(url,timeout=15)        #Get方式获取网页数据
         r.encoding = "utf-8"
+        if r.status_code == 200:
+           goonggao_Html=strhtml.text
+           print(goonggao_Html)
+           MOS_L_1=os.path.join(".MOS","Html")
+           MOS_L_2=os.path.join(MOS_L_1,"gonggao.html")
+           MOS_Html_gonggao_ok=open(MOS_L_2,'w+',encoding='utf-8')
+           MOS_Html_gonggao_ok.write(goonggao_Html)
+           self.sinOut_gonggao_ok.emit(goonggao_Html)
+        elif r.status_code == 403:
+           print("公告请求失败，状态码为403")
+           self.sinOut_gonggao_error.emit("403")
         # requests.exceptions.SSLError
-        print(strhtml.text)
-        self.sinOut_gonggao.emit("OK!")
+        # requests.exceptions.ConnectTimeout
 
+
+
+def folder_first():
+    os.makedirs(".MOS", exist_ok=True)
+    MOS_L=os.path.join(".MOS","Html")
+    os.makedirs(MOS_L, exist_ok=True)
+    MOS_L=os.path.join(".MOS","Java")
+    os.makedirs(MOS_L, exist_ok=True)
+    MOS_L=os.path.join(".MOS","Images")
+    os.makedirs(MOS_L, exist_ok=True)
+    MOS_L=os.path.join(".MOS","Music")
+    os.makedirs(MOS_L, exist_ok=True)
+    MOS_L=os.path.join(".MOS","MOS.json")
+    # MOS_json=open(MOS_l,'w+',encoding='utf-8')
 
 
 
 if __name__ == '__main__':
+    folder_first()
     print ("程序已开始运行！")
     app = QtWidgets.QApplication(sys.argv)
     print ("请稍等...")
