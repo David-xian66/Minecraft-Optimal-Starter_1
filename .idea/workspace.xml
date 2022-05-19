@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="653fc617-9e15-451f-a568-a2b24eb58436" name="变更" comment="5.16">
-      <change afterPath="$PROJECT_DIR$/MOS.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.MOS/Html/gonggao.html" beforeDir="false" afterPath="$PROJECT_DIR$/.MOS/MOS.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.MOS/MOS.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MOS.py" beforeDir="false" afterPath="$PROJECT_DIR$/MOS.py" afterDir="false" />
     </list>
@@ -447,7 +446,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652711384525</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="5.16">
+      <created>1652797171874</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1652797171874</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -1,7 +1,5 @@
-import sys,os
-import requests
-import json
-import datetime
+import sys,os, requests, json, datetime
+from os import path
 
 
 from PyQt6.QtCore import *
@@ -548,20 +546,44 @@ class gonggao(QThread):
         # requests.exceptions.ConnectTimeout
 
 
-
+def game_first_initialize():
+    '''遍历versions文件+缓存'''
+    # 遍历文件夹
+    url=os.path.join(".minecraft","versions")
+    file  = os.listdir(url)
+    for f in file:
+        real_url = path.join (url , f)
+        print("versions下文件夹："+ real_url)
 
 
 def MOS_Json():
     #创建文件
+
+    MOS_L=os.path.join(".minecraft","mods")
+    os.makedirs(MOS_L, exist_ok=True)
+
+    MOS_L=os.path.join(".minecraft","logs")
+    os.makedirs(MOS_L, exist_ok=True)
+
+    MOS_L=os.path.join(".minecraft","versions")
+    os.makedirs(MOS_L, exist_ok=True)
+
+
+    MOS_L=os.path.join(".MOS","Html")
     os.makedirs(".MOS", exist_ok=True)
+
     MOS_L=os.path.join(".MOS","Html")
     os.makedirs(MOS_L, exist_ok=True)
+
     MOS_L=os.path.join(".MOS","Java")
     os.makedirs(MOS_L, exist_ok=True)
+
     MOS_L=os.path.join(".MOS","Images")
     os.makedirs(MOS_L, exist_ok=True)
+
     MOS_L=os.path.join(".MOS","Music")
     os.makedirs(MOS_L, exist_ok=True)
+
     MOS_L=os.path.join(".MOS","MOS.json")
     if os.path.isfile(MOS_L)==True:
         MOS_first_run = "NoFirst"
@@ -571,15 +593,21 @@ def MOS_Json():
         MOS_first_run = "First"
     MOS_L = os.path.join(".MOS", "MOS.json")
     MOS_json_write = MOS_L
-    if MOS_first_run=="First":
+    #if MOS_first_run=="First":
+
         #如果是第一次运行就（下
-        with open(MOS_json_write, "w"):
+
+
+        #with open(MOS_json_write, "w", encoding="utf-8") as f:
             #获取当前时间
             # 这个变量里存储的是当前时间
-            start_time= datetime.datetime.now()
-            aaa="11212"
-            MOS_json_1=json.dumps(start_time,aaa)
-
+            #curr_time = datetime.datetime.now()
+            #time_str = curr_time.strftime("%Y-%m-%d")
+            #time_str = datetime.datetime.strftime(curr_time,'%Y-%m-%d %H:%M:%S')
+            #a_3={'time':time_str}
+            #json.dumps(time_str)
+            
+    game_first_initialize()
 
 
 if __name__ == '__main__':
