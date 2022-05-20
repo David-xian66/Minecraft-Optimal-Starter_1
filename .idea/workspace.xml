@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="653fc617-9e15-451f-a568-a2b24eb58436" name="变更" comment="5.16">
-      <change beforePath="$PROJECT_DIR$/.MOS/MOS.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MOS.py" beforeDir="false" afterPath="$PROJECT_DIR$/MOS.py" afterDir="false" />
     </list>

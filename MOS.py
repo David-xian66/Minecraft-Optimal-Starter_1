@@ -541,6 +541,8 @@ class gonggao(QThread):
 
         except requests.exceptions.ConnectTimeout:
             self.sinOut_gonggao_error.emit("请求超时")
+        except requests.exceptions.ReadTimeout:
+            self.sinOut_gonggao_error.emit("读取超时")
 
         # requests.exceptions.SSLError
         # requests.exceptions.ConnectTimeout
@@ -551,9 +553,25 @@ def game_first_initialize():
     # 遍历文件夹
     url=os.path.join(".minecraft","versions")
     file  = os.listdir(url)
+    MOS_versions_1 = []
+    MOS_versions_4 = []
     for f in file:
         real_url = path.join (url , f)
-        print("versions下文件夹："+ real_url)
+        print("versions下文件/夹："+ real_url)
+        if os.path.isdir(real_url):
+            print(real_url + "是文件夹，检测成功")
+            MOS_versions_1.append(real_url)
+        print("\n" + "版本列表："+ str(MOS_versions_1))
+    for MOS_versions_2 in MOS_versions_1:
+        MOS_versions_3 = MOS_versions_2[20:]
+        print(MOS_versions_3)
+        MOS_versions_4.append(MOS_versions_3)
+    print("成功检测文件名" + str(MOS_versions_4))
+    for MOS_versions_5 in MOS_versions_4:
+        MOS_versions_5_url_1=(MOS_versions_5 +".jar")
+        print("版本名" + MOS_versions_5 +MOS_versions_5_url_1)
+        MOS_versions_5_url_2 = os.path.join(MOS_versions_5 , "versions")
+
 
 
 def MOS_Json():
