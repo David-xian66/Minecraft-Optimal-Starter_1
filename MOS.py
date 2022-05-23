@@ -576,7 +576,7 @@ def game_first_initialize():
 
 def MOS_Json():
     #创建文件
-
+    # PermissionError
     MOS_L=os.path.join(".minecraft","mods")
     os.makedirs(MOS_L, exist_ok=True)
 
