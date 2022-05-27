@@ -568,9 +568,12 @@ def game_first_initialize():
         MOS_versions_4.append(MOS_versions_3)
     print("成功检测文件名" + str(MOS_versions_4))
     for MOS_versions_5 in MOS_versions_4:
+        # 拼接路径（.jar）并检测是否版本有效
         MOS_versions_5_url_1=(MOS_versions_5 +".jar")
-        print("版本名" + MOS_versions_5 +MOS_versions_5_url_1)
-        MOS_versions_5_url_2 = os.path.join(MOS_versions_5 , "versions")
+        MOS_versions_5_url_2=os.path.join(url,MOS_versions_5)
+        MOS_versions_5_url_3=os.path.join(str(MOS_versions_5_url_2),MOS_versions_5_url_1)
+        print("版本名"+MOS_versions_5_url_1)
+        print("版本.jar文件路径："+MOS_versions_5_url_3)
 
 
 
