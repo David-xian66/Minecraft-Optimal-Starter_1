@@ -562,11 +562,17 @@ def game_first_initialize():
             print(real_url + "是文件夹，检测成功")
             MOS_versions_1.append(real_url)
         print("\n" + "版本列表："+ str(MOS_versions_1))
+
     for MOS_versions_2 in MOS_versions_1:
         MOS_versions_3 = MOS_versions_2[20:]
         print(MOS_versions_3)
         MOS_versions_4.append(MOS_versions_3)
+
     print("成功检测文件名" + str(MOS_versions_4))
+
+    MOS_versions_youxiao = []
+    MOS_versions_no_youxiao = []
+
     for MOS_versions_5 in MOS_versions_4:
         # 拼接路径（.jar）并检测是否版本有效
         MOS_versions_5_url_1=(MOS_versions_5 +".jar")
@@ -574,7 +580,15 @@ def game_first_initialize():
         MOS_versions_5_url_3=os.path.join(str(MOS_versions_5_url_2),MOS_versions_5_url_1)
         print("版本名"+MOS_versions_5_url_1)
         print("版本.jar文件路径："+MOS_versions_5_url_3)
-
+        
+        if os.path.exists(MOS_versions_5_url_3):
+            MOS_versions_youxiao.append(MOS_versions_5_url_3)
+            print(MOS_versions_5_url_3+"有效")
+        else:
+            MOS_versions_no_youxiao.append(MOS_versions_5_url_3)
+            print(MOS_versions_5_url_3+"无效")
+        print("有效的游戏：" + str(MOS_versions_youxiao))
+        print("无效的游戏：" + str(MOS_versions_no_youxiao))
 
 
 def MOS_Json():
