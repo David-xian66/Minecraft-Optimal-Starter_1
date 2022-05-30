@@ -548,47 +548,47 @@ class gonggao(QThread):
         # requests.exceptions.ConnectTimeout
 
 
-def game_first_initialize():
+def game_first_initialize(file):
     '''遍历versions文件+缓存'''
-    # 遍历文件夹
-    url=os.path.join(".minecraft","versions")
-    file  = os.listdir(url)
-    MOS_versions_1 = []
-    MOS_versions_4 = []
-    for f in file:
-        real_url = path.join (url , f)
-        print("versions下文件/夹："+ real_url)
+    file_2 = path.join (file , "versions")
+    print(file_2)
+    MOS_versions_zhengchang = []
+    MOS_versions_not_found_jar = []
+    MOS_versions_not_found_json = []
+    s_file  = os.listdir(file_2)
+    for f in s_file:
+        f_2=str(f)
+        real_url = path.join (file_2,f_2)
+        # real_url是versions下的文件的相对路径
         if os.path.isdir(real_url):
-            print(real_url + "是文件夹，检测成功")
-            MOS_versions_1.append(real_url)
-        print("\n" + "版本列表："+ str(MOS_versions_1))
+            # real_url是versions下的文件的相对路径，如果是文件夹
+            f_2=path.join (file_2 , f)
+            f_3=path.join (f_2 , f)
+            # f_2是版本文件夹的相对路径
+            jar = (f_3+".jar")
+            json = (f_3+".json")
+            print(jar)
+            print(json)
+            if os.path.exists(jar):
+               if os.path.exists(json):
+                   MOS_versions_zhengchang.append(f_3)
+               else:
+                   MOS_versions_not_found_json.append(f_3)
+            else:
+                MOS_versions_not_found_jar.append(f_3)
 
-    for MOS_versions_2 in MOS_versions_1:
-        MOS_versions_3 = MOS_versions_2[20:]
-        print(MOS_versions_3)
-        MOS_versions_4.append(MOS_versions_3)
+    print("\n" + "——————————————————————————————————————————————————————")
+    print("——————————————————————————————————————————————————————")
+    print("\n" + "正常的游戏："+ str(MOS_versions_zhengchang))
+    print("——————————————————————————————————————————————————————")
+    print("找不到.jar文件的游戏："+ str(MOS_versions_not_found_jar))
+    print("——————————————————————————————————————————————————————")
+    print("找不到.json文件的游戏："+ str(MOS_versions_not_found_json))
+    print("——————————————————————————————————————————————————————")
+    print("检测完毕")
+                
 
-    print("成功检测文件名" + str(MOS_versions_4))
 
-    MOS_versions_youxiao = []
-    MOS_versions_no_youxiao = []
-
-    for MOS_versions_5 in MOS_versions_4:
-        # 拼接路径（.jar）并检测是否版本有效
-        MOS_versions_5_url_1=(MOS_versions_5 +".jar")
-        MOS_versions_5_url_2=os.path.join(url,MOS_versions_5)
-        MOS_versions_5_url_3=os.path.join(str(MOS_versions_5_url_2),MOS_versions_5_url_1)
-        print("版本名"+MOS_versions_5_url_1)
-        print("版本.jar文件路径："+MOS_versions_5_url_3)
-        
-        if os.path.exists(MOS_versions_5_url_3):
-            MOS_versions_youxiao.append(MOS_versions_5_url_3)
-            print(MOS_versions_5_url_3+"有效")
-        else:
-            MOS_versions_no_youxiao.append(MOS_versions_5_url_3)
-            print(MOS_versions_5_url_3+"无效")
-        print("有效的游戏：" + str(MOS_versions_youxiao))
-        print("无效的游戏：" + str(MOS_versions_no_youxiao))
 
 
 def MOS_Json():
@@ -641,8 +641,8 @@ def MOS_Json():
             #time_str = datetime.datetime.strftime(curr_time,'%Y-%m-%d %H:%M:%S')
             #a_3={'time':time_str}
             #json.dumps(time_str)
-            
-    game_first_initialize()
+    file=".minecraft"
+    game_first_initialize(file)
 
 
 if __name__ == '__main__':
