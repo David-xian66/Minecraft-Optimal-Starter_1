@@ -1,3 +1,4 @@
+# MOS1已停止开发，请移步[SkyWorldStudio/Minecraft-Optimal-Starter_3](https://github.com/SkyWorldStudio/Minecraft-Optimal-Starter_3)
 # Minecraft-Optimal-Starter 1
 
 ---
